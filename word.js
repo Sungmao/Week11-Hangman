@@ -36,8 +36,9 @@ var LetterCheck = function() {
 			this.blanksAndSuccesses = blanksAndSuccesses;
 			
 		} else {
-		this.wrongGuesses.push(letter); // then we add the letter to the list of wrong letters
-	//	this.numGuesses--; // and we subtract one of the guesses
+		this.blanksAndSuccesses = blanksAndSuccesses;
+		this.wrongGuesses.push(letter);
+	//	this.numGuesses--;
 		}
 	}
 

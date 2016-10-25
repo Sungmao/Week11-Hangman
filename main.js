@@ -9,7 +9,6 @@ var wordCheck = new word();
 var letter = require('./letter.js')
 var letterDisplay = new letter();
 
-console.log(wordForGame.chosenWord);
 var randomWord = wordForGame.chosenWord;
 
 wordCheck.lettersInChosenWord(randomWord);
@@ -17,10 +16,12 @@ wordCheck.lettersInChosenWord(randomWord);
 var ans = wordCheck.answer;
 
 letterDisplay.firstAppear(ans);
+console.log("Planets in The Solar System")
 console.log(letterDisplay.blanksAndSuccesses);
 
+var numGuesses = 15;
 
-playGame();
+playGame(numGuesses);
 
 
 function playGame() {
@@ -38,19 +39,32 @@ function playGame() {
 
 		var blanksAndSuccesses = letterDisplay.blanksAndSuccesses;
 
+		
 		wordCheck.compare(letter, blanksAndSuccesses);
 
+
 		console.log("Current Game Status: " + wordCheck.blanksAndSuccesses);
-		console.log(wordCheck.wrongGuesses);
+		console.log("Wrong letters: " + wordCheck.wrongGuesses);
 
 
 		if (ans.toString() == wordCheck.blanksAndSuccesses.toString()) {
 		console.log("You Win!!!!");
+		console.log("The answer is " + randomWord + ".")
+		console.log("---------------------------------")
 		} 
-		else{ 
-			console.log("guss again")
+		else if(numGuesses > 1){ 
+			console.log("Planets in The Solar System")
+			console.log("Guss again. You still can try " + numGuesses + " times")
+			numGuesses--;
+			console.log("---------------------------------")
+			
 			playGame();
+		} else{
+			console.log("Sorry!!!! You lose!!!!")
+			console.log("The answer is " + randomWord + ".")
+			console.log("---------------------------------")
 		}
+
 
 
 	})
